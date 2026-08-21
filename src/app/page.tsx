@@ -49,12 +49,9 @@ export default function HomePage() {
 
                   <div className="mt-10 flex flex-col items-start gap-4">
                     <div className="flex flex-wrap gap-3">
-                      <a
-                        href={`mailto:${profile.email}`}
-                        className={primaryButtonClass}
-                      >
-                        Email me
-                      </a>
+                      <Link href="/connect" className={primaryButtonClass}>
+                        Connect
+                      </Link>
                       <Link
                         href="/experience"
                         className={secondaryButtonClass}

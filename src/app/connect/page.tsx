@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { AboutView } from "@/components/AboutView";
+import { ContactView } from "@/components/ContactView";
 import { Footer } from "@/components/Footer";
 import { Navigation } from "@/components/Navigation";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "Connect",
 };
 
-export default function AboutPage() {
+export default function ConnectPage() {
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
-      <AboutView />
+      <ContactView />
       <Footer />
     </div>
   );

@@ -5,6 +5,7 @@ import {
   pageTitleClass,
   sectionClass,
 } from "@/components/ui";
+import { CommunityShowcase } from "@/components/CommunityShowcase";
 import { ExperienceExplorer } from "@/components/ExperienceExplorer";
 import { FadeIn } from "@/components/FadeIn";
 import { PageShell } from "@/components/PageShell";
@@ -45,27 +46,10 @@ export default function ExperiencePage() {
 
         <section className={sectionClass}>
           <SectionLabel>Community</SectionLabel>
-          <ul className="mt-8 divide-y divide-zinc-200 border-t border-zinc-200">
-            {profile.community.map((item) => (
-              <li
-                key={item.name}
-                className="grid gap-2 py-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-baseline sm:gap-8"
-              >
-                <div>
-                  <p className="font-medium text-zinc-900">{item.name}</p>
-                  <p className="mt-0.5 text-sm text-zinc-500">{item.role}</p>
-                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-600">
-                    {item.detail}
-                  </p>
-                </div>
-                {item.period && (
-                  <p className="shrink-0 text-sm text-zinc-400 sm:text-right">
-                    {item.period}
-                  </p>
-                )}
-              </li>
-            ))}
-          </ul>
+          <p className="mt-3 max-w-md text-sm leading-relaxed text-zinc-500">
+            Education, healthcare access, and curriculum at scale.
+          </p>
+          <CommunityShowcase items={profile.community} />
         </section>
       </main>
     </PageShell>

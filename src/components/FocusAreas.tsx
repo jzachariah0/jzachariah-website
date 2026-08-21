@@ -167,7 +167,7 @@ export function FocusAreas({ areas = profile.focusAreas }: FocusAreasProps) {
               );
             })}
 
-            {/* Dot scrubber — clear affordance */}
+            {/* Dot scrubber - clear affordance */}
             <div className="mt-8 flex items-center gap-2" aria-hidden>
               {areas.map((area) => {
                 const on = area.id === activeId;

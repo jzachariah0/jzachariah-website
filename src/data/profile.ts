@@ -109,7 +109,7 @@ export const profile = {
       role: "Cybersecurity Engineer Intern",
       metric: "12 weeks",
       detail:
-        "Took Early Engagement from concept to company-wide production. Led Product Change Reviews for customer-facing payment and AI features across security, privacy, and risk.",
+        "Introduced PayPal’s first shift-left security front door, taking it from concept to company-wide production. Led Product Change Reviews for customer-facing payment and AI features across security, privacy, and risk.",
       logo: "/logos/paypal.svg",
     },
     {
@@ -117,7 +117,7 @@ export const profile = {
       role: "Security Consultant via JJZAC",
       metric: "5,000+ users",
       detail:
-        "Shipped Entra ID Entitlement Management across 300+ enterprise apps—access reviews automated with Graph, PowerShell, and Logic Apps.",
+        "Shipped Entra ID Entitlement Management across 300+ enterprise apps. Access reviews automated with Graph, PowerShell, and Logic Apps.",
       logo: "/logos/clyde.jpg",
     },
     {
@@ -405,7 +405,7 @@ export const profile = {
     {
       slug: "thevenin-ai",
       name: "Thevenin AI",
-      role: "Security Engineer",
+      role: "Co-Founder and Security Engineer",
       featured: true,
       period: "Mar 2026 to Present",
       logo: "/logos/thevenin-logo.png",
@@ -438,33 +438,41 @@ export const profile = {
   ] satisfies Project[],
   community: [
     {
-      name: "Cardily",
-      role: "Head of Product & Strategy",
-      period: "Dec 2025 to Present",
-      logo: "/logos/cardily_logo.jpg",
-      detail:
-        "AI-enabled healthcare platform, including AED mapping for underserved communities.",
-    },
-    {
       name: "Coding Central",
       role: "Founder & President",
+      metric: "5,000+",
+      metricLabel: "students taught",
       logo: "/logos/codingcentral_logo.jpg",
       detail:
         "Free STEM education for 5,000+ students. Partners include Microsoft, Google, Adobe, Garland ISD, and Kenyatta University.",
     },
     {
+      name: "Garland ISD",
+      role: "CTE Panel Member",
+      metric: "50,000+",
+      metricLabel: "students impacted",
+      logo: "/logos/GISD.png",
+      detail: "Cybersecurity, IT, and AI curriculum for 50,000+ students.",
+    },
+    {
+      name: "Cardily",
+      role: "Head of Product & Strategy",
+      period: "Dec 2025 to Present",
+      metric: "AED map",
+      metricLabel: "underserved access",
+      logo: "/logos/cardily_logo.jpg",
+      detail:
+        "AI-enabled healthcare platform, including AED mapping for underserved communities.",
+    },
+    {
       name: "Stanford University",
       role: "Section Leader, Code in Place",
       period: "Apr 2026 to May 2026",
+      metric: "CIP",
+      metricLabel: "global cohort",
       logo: "/logos/stanford.webp",
       detail:
         "Mentored a global cohort through Stanford's introductory CS program with weekly Python instruction.",
-    },
-    {
-      name: "Garland ISD",
-      role: "CTE Panel Member",
-      logo: "/logos/GISD.png",
-      detail: "Cybersecurity, IT, and AI curriculum for 50,000+ students",
     },
   ],
   achievements: [
@@ -495,7 +503,7 @@ export const profile = {
 export const navLinks = [
   { label: "Experience", href: "/experience" },
   { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "Connect", href: "/connect" },
 ];
 
 export function getExperiences(limit?: number): Experience[] {

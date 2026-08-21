@@ -23,7 +23,7 @@ export function StoryChapters() {
   if (!active) return null;
 
   return (
-    <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] lg:gap-16">
+    <div className="grid gap-10 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] lg:gap-16">
       <div role="tablist" aria-label="Story chapters" aria-orientation="vertical">
         {story.sections.map((section, index) => {
           const on = section.id === activeId;
@@ -107,6 +107,16 @@ export function StoryChapters() {
                 <p key={p.slice(0, 40)}>{p}</p>
               ))}
             </div>
+            <div className="mt-6 flex gap-1.5" aria-hidden>
+              {story.sections.map((section) => (
+                <span
+                  key={section.id}
+                  className={`h-0.5 flex-1 transition-colors duration-300 ${
+                    section.id === activeId ? "bg-accent" : "bg-zinc-200"
+                  }`}
+                />
+              ))}
+            </div>
           </motion.div>
         </AnimatePresence>
       </div>
@@ -118,7 +128,7 @@ export function WritingMedia() {
   const { story } = profile;
 
   return (
-    <ul className="mt-10 divide-y divide-zinc-200 border-t border-zinc-200">
+    <ul className="divide-y divide-zinc-200 border-t border-zinc-200">
       {story.books.map((book) => (
         <li
           key={book.title}

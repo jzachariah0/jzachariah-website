@@ -60,7 +60,7 @@ export function ContactView() {
       {/* Full-bleed hero */}
       <section className="relative overflow-hidden border-b border-zinc-100 bg-white">
         <ContactWave />
-        <div className="relative mx-auto max-w-5xl px-6 pt-16 pb-24 sm:pt-24 sm:pb-32 lg:pt-28 lg:pb-36">
+        <div className="relative z-10 mx-auto max-w-5xl px-6 pt-16 pb-24 sm:pt-24 sm:pb-32 lg:pt-28 lg:pb-36">
           <motion.p
             className="text-[13px] font-medium tracking-[0.14em] text-zinc-400 uppercase"
             {...fadeUp(0, reduceMotion)}
@@ -71,13 +71,13 @@ export function ContactView() {
             className="mt-4 max-w-xl text-5xl font-semibold tracking-tight text-[#0A2540] sm:text-6xl lg:text-7xl lg:leading-[1.02]"
             {...fadeUp(0.08, reduceMotion)}
           >
-            Contact
+            Connect
           </motion.h1>
           <motion.p
             className="mt-5 max-w-md text-lg leading-relaxed text-[#425466] sm:text-xl"
             {...fadeUp(0.16, reduceMotion)}
           >
-            Available for remote and hybrid cybersecurity roles — pick a time
+            Available for remote and hybrid cybersecurity roles. Pick a time
             or reach out directly.
           </motion.p>
           <motion.div

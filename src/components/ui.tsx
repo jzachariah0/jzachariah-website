@@ -12,15 +12,15 @@ export const pageTitleClass =
 export const linkClass =
   "text-zinc-500 transition-colors hover:text-accent";
 
-/** Stripe/Vercel primary — solid, equal height to secondary */
+/** Stripe/Vercel primary - solid, equal height to secondary */
 export const primaryButtonClass =
   "inline-flex h-12 min-w-[10.5rem] items-center justify-center bg-accent px-6 text-[15px] font-medium tracking-[-0.01em] text-white transition-colors duration-200 hover:bg-accent-hover active:bg-accent-hover/90";
 
-/** Matching outline twin — same size as primary */
+/** Matching outline twin - same size as primary */
 export const secondaryButtonClass =
   "inline-flex h-12 min-w-[10.5rem] items-center justify-center border border-zinc-300 bg-white px-6 text-[15px] font-medium tracking-[-0.01em] text-zinc-900 transition-colors duration-200 hover:border-zinc-400 hover:bg-zinc-50";
 
-/** Quiet text action — never mixed into the button row */
+/** Quiet text action - never mixed into the button row */
 export const textButtonClass =
   "inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-accent";
 

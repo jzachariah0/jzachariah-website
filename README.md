@@ -1,13 +1,13 @@
 # joshuazachariah.com
 
-Personal portfolio — Next.js, Tailwind CSS, Geist.
+Personal portfolio - Next.js, Tailwind CSS, Geist.
 
 ## Pages
 
-- `/` — Home
-- `/experience` — Roles and projects
-- `/about` — Education, recognition, organizations
-- `/contact` — Email and links
+- `/` - Home
+- `/experience` - Roles and projects
+- `/about` - Education, recognition, organizations
+- `/connect` - Email and scheduling
 
 ## Development
 

@@ -226,7 +226,7 @@ function ProofExplorer() {
           })}
         </div>
 
-        {/* Detail — animated */}
+        {/* Detail - animated */}
         <div className="relative min-h-[200px] lg:min-h-[240px] lg:pt-1">
           <AnimatePresence mode="wait">
             <motion.div
