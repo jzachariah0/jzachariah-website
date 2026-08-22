@@ -119,14 +119,14 @@ export function AboutView() {
 
   return (
     <main>
-      {/* Lean hero */}
       <section className="relative overflow-hidden border-b border-zinc-100 bg-white">
         <AboutHorizon />
-        <div className="relative z-10 mx-auto max-w-5xl px-6 pt-16 pb-16 sm:pt-20 sm:pb-20 lg:pt-24">
-          <div className="flex flex-col gap-10 sm:flex-row sm:items-start sm:gap-12 lg:gap-14">
+        <div className="relative z-10 mx-auto max-w-5xl px-6 pt-12 pb-10 sm:pt-16 sm:pb-12 lg:pt-20">
+          {/* Intro */}
+          <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-12 lg:gap-14">
             <motion.div {...fadeUp(0, reduceMotion)}>
               <Headshot
-                size="xl"
+                size="lg"
                 priority
                 className="shrink-0 shadow-[0_12px_40px_rgba(0,0,0,0.06)]"
               />
@@ -139,82 +139,86 @@ export function AboutView() {
                 About · {profile.location}
               </motion.p>
               <motion.h1
-                className="mt-3 text-4xl font-semibold tracking-tight text-[#0A2540] sm:text-5xl sm:leading-[1.08] lg:text-6xl"
+                className="mt-3 text-4xl font-semibold tracking-tight text-[#0A2540] sm:text-5xl sm:leading-[1.08]"
                 {...fadeUp(0.1, reduceMotion)}
               >
                 {profile.name}
               </motion.h1>
               <motion.p
-                className="mt-5 text-lg leading-relaxed text-[#0A2540] sm:text-xl"
-                {...fadeUp(0.18, reduceMotion)}
+                className="mt-4 text-base leading-relaxed text-[#0A2540] sm:text-lg"
+                {...fadeUp(0.16, reduceMotion)}
               >
                 {profile.story.mission}
               </motion.p>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* One category at a time */}
-      <section className="border-b border-zinc-100 bg-white">
-        <div className="mx-auto max-w-5xl px-6 py-14 sm:py-16">
-          <div
-            role="tablist"
-            aria-label="About sections"
-            className="flex flex-wrap gap-x-1 gap-y-2 border-b border-zinc-200"
+          {/* Tabs visible on first paint */}
+          <motion.div
+            className="mt-10 sm:mt-12"
+            {...fadeUp(0.22, reduceMotion)}
           >
-            {CATEGORIES.map((cat) => {
-              const on = cat.id === active;
-              return (
-                <button
-                  key={cat.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={on}
-                  onClick={() => setActive(cat.id)}
-                  className={`relative px-4 py-3 text-sm tracking-tight transition-colors outline-none focus-visible:bg-zinc-50 ${
-                    on
-                      ? "font-semibold text-[#0A2540]"
-                      : "font-medium text-zinc-400 hover:text-zinc-600"
-                  }`}
-                >
-                  {cat.label}
-                  {on && (
-                    <motion.span
-                      layoutId={reduceMotion ? undefined : "about-tab-underline"}
-                      className="absolute inset-x-4 bottom-0 h-0.5 bg-accent"
-                      transition={{ duration: 0.3, ease: EASE }}
-                      aria-hidden
-                    />
-                  )}
-                </button>
-              );
-            })}
-          </div>
-
-          <p className="mt-6 text-sm text-zinc-500">{activeMeta.blurb}</p>
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={active}
-              role="tabpanel"
-              initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -6 }}
-              transition={{ duration: 0.3, ease: EASE }}
-              className="mt-8"
+            <div
+              role="tablist"
+              aria-label="About sections"
+              className="flex flex-wrap gap-x-1 gap-y-2 border-b border-zinc-200"
             >
-              {active === "story" && <StoryChapters />}
-              {active === "credentials" && <CredentialsPanel />}
-              {active === "media" && <WritingMedia />}
-            </motion.div>
-          </AnimatePresence>
+              {CATEGORIES.map((cat) => {
+                const on = cat.id === active;
+                return (
+                  <button
+                    key={cat.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={on}
+                    onClick={() => setActive(cat.id)}
+                    className={`relative px-4 py-3 text-sm tracking-tight transition-colors outline-none focus-visible:bg-zinc-50 ${
+                      on
+                        ? "font-semibold text-[#0A2540]"
+                        : "font-medium text-zinc-400 hover:text-zinc-600"
+                    }`}
+                  >
+                    {cat.label}
+                    {on && (
+                      <motion.span
+                        layoutId={
+                          reduceMotion ? undefined : "about-tab-underline"
+                        }
+                        className="absolute inset-x-4 bottom-0 h-0.5 bg-accent"
+                        transition={{ duration: 0.3, ease: EASE }}
+                        aria-hidden
+                      />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+
+            <p className="mt-5 text-sm text-zinc-500">{activeMeta.blurb}</p>
+
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                role="tabpanel"
+                initial={
+                  reduceMotion ? { opacity: 1 } : { opacity: 0, y: 10 }
+                }
+                animate={{ opacity: 1, y: 0 }}
+                exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -6 }}
+                transition={{ duration: 0.3, ease: EASE }}
+                className="mt-6"
+              >
+                {active === "story" && <StoryChapters />}
+                {active === "credentials" && <CredentialsPanel />}
+                {active === "media" && <WritingMedia />}
+              </motion.div>
+            </AnimatePresence>
+          </motion.div>
         </div>
       </section>
 
-      {/* CTA */}
       <section className="bg-white">
-        <div className="mx-auto max-w-5xl px-6 py-16 sm:py-20">
+        <div className="mx-auto max-w-5xl px-6 py-14 sm:py-16">
           <p className="text-[13px] font-medium tracking-[0.14em] text-zinc-400 uppercase">
             Next
           </p>
