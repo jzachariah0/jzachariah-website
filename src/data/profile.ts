@@ -52,7 +52,8 @@ export interface Project {
 export const profile = {
   name: "Joshua Zachariah",
   domain: "joshuazachariah.com",
-  seeking: "Open to cybersecurity new grad roles.",
+  seeking:
+    "Prev. Cybersecurity Engineer Intern at PayPal, #1 New Release Author, Top 0.01% Technology Sales Consultant",
   title: "Cybersecurity Engineer/Consultant",
   headline:
     "PayPal Cybersecurity Engineer Intern. ISC2 certified. #1 New Release Author. UT Dallas, Class of 2027.",
@@ -66,6 +67,7 @@ export const profile = {
     linkedin: "https://www.linkedin.com/in/joshzachariah",
     github: "https://github.com/jzachariah0",
     calendly: "https://calendly.com/joshuaszachariah/30min",
+    resume: "/resume",
   },
   about: [
     "Cybersecurity-focused Computer Engineering Honors student at UT Dallas (Collegium V, Academic Excellence Scholarship), graduating May 2027.",
@@ -237,7 +239,7 @@ export const profile = {
         title: "The Digital Odyssey: Navigating the Impact of Technology",
         note: "Amazon #1 New Release",
         cover: "/logos/book-cover.jpg",
-        url: "https://www.amazon.com",
+        url: "https://a.co/d/0iBNhmwW",
       },
       {
         title: "Pumping Life: The Power of Your Heart",
@@ -500,10 +502,33 @@ export const profile = {
   ],
 };
 
+export const accentPalette = [
+  "#0A84FF",
+  "#00C2A8",
+  "#7C5CFC",
+  "#F5A623",
+  "#FF5A5F",
+  "#635BFF",
+];
+
+export const experienceCategoryColors: Record<ExperienceCategory, string> = {
+  security: "#0A84FF",
+  ai: "#00C2A8",
+  research: "#7C5CFC",
+  education: "#F5A623",
+  leadership: "#FF5A5F",
+  consulting: "#635BFF",
+};
+
+export function accentAt(index: number): string {
+  return accentPalette[index % accentPalette.length];
+}
+
 export const navLinks = [
-  { label: "Experience", href: "/experience" },
-  { label: "About", href: "/about" },
-  { label: "Connect", href: "/connect" },
+  { label: "Work", href: "#work" },
+  { label: "Experience", href: "#experience" },
+  { label: "About", href: "#about" },
+  { label: "Connect", href: "#connect" },
 ];
 
 export function getExperiences(limit?: number): Experience[] {

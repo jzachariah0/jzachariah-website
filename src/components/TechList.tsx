@@ -1,12 +1,14 @@
 export function TechList({ items }: { items: string[] }) {
   return (
-    <p className="text-sm text-zinc-400">
-      {items.map((item, index) => (
-        <span key={item}>
-          {index > 0 && ", "}
+    <ul className="flex flex-wrap gap-2">
+      {items.map((item) => (
+        <li
+          key={item}
+          className="rounded-full border border-border bg-surface px-3 py-1 text-xs font-medium tracking-[-0.01em] text-muted"
+        >
           {item}
-        </span>
+        </li>
       ))}
-    </p>
+    </ul>
   );
 }

@@ -32,7 +32,7 @@ export function Headshot({
       width={dim}
       height={dim}
       priority={priority}
-      className={`${sizeClass} border border-zinc-200 object-cover object-top ${className}`}
+      className={`${sizeClass} rounded-2xl border border-border object-cover object-top ${className}`}
     />
   );
 }

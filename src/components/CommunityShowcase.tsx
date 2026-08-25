@@ -28,7 +28,7 @@ export function CommunityShowcase({ items }: { items: CommunityItem[] }) {
           return (
             <div
               key={item.name}
-              className="relative border-b border-zinc-200/90"
+              className="relative border-b border-border"
             >
               {on && (
                 <motion.span
@@ -43,11 +43,11 @@ export function CommunityShowcase({ items }: { items: CommunityItem[] }) {
                 role="tab"
                 aria-selected={on}
                 onClick={() => setActiveName(item.name)}
-                className="flex w-full items-center gap-3 py-5 pl-4 text-left outline-none transition-colors focus-visible:bg-zinc-50"
+                className="group flex w-full items-center gap-3 py-5 pl-4 text-left outline-none transition-colors focus-visible:bg-surface"
               >
                 <span
                   className={`shrink-0 font-mono text-[11px] tracking-wide tabular-nums ${
-                    on ? "text-accent" : "text-zinc-300"
+                    on ? "text-accent" : "text-muted/50"
                   }`}
                 >
                   {String(index + 1).padStart(2, "0")}
@@ -57,15 +57,15 @@ export function CommunityShowcase({ items }: { items: CommunityItem[] }) {
                   <span
                     className={`block text-[15px] tracking-tight transition-colors ${
                       on
-                        ? "font-semibold text-[#0A2540]"
-                        : "font-medium text-zinc-400 hover:text-zinc-600"
+                        ? "font-semibold text-foreground"
+                        : "font-medium text-muted hover:text-muted"
                     }`}
                   >
                     {item.name}
                   </span>
                   <span
                     className={`mt-0.5 block text-sm transition-colors ${
-                      on ? "text-[#425466]" : "text-zinc-400"
+                      on ? "text-muted" : "text-muted"
                     }`}
                   >
                     {item.role}
@@ -78,9 +78,9 @@ export function CommunityShowcase({ items }: { items: CommunityItem[] }) {
       </div>
 
       <div className="relative min-h-[220px] lg:pt-1">
-        <p className="font-mono text-[11px] tracking-wide text-zinc-400 tabular-nums">
+        <p className="font-mono text-[11px] tracking-wide text-muted tabular-nums">
           {String(activeIndex + 1).padStart(2, "0")}
-          <span className="mx-1.5 text-zinc-300">/</span>
+          <span className="mx-1.5 text-muted/50">/</span>
           {String(items.length).padStart(2, "0")}
         </p>
 
@@ -100,24 +100,24 @@ export function CommunityShowcase({ items }: { items: CommunityItem[] }) {
               </p>
             )}
             {"metricLabel" in active && active.metricLabel && (
-              <p className="mt-1 text-sm text-zinc-500">{active.metricLabel}</p>
+              <p className="mt-1 text-sm text-muted">{active.metricLabel}</p>
             )}
 
             <div className="mt-6 flex items-center gap-3">
               <BrandMark src={active.logo} size={40} active />
               <div>
-                <h3 className="text-xl font-semibold tracking-tight text-[#0A2540] sm:text-2xl">
+                <h3 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
                   {active.name}
                 </h3>
-                <p className="mt-0.5 text-sm text-[#425466]">{active.role}</p>
+                <p className="mt-0.5 text-sm text-muted">{active.role}</p>
               </div>
             </div>
 
             {active.period && (
-              <p className="mt-3 text-sm text-zinc-400">{active.period}</p>
+              <p className="mt-3 text-sm text-muted">{active.period}</p>
             )}
 
-            <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-[#425466] sm:text-base">
+            <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-muted sm:text-base">
               {active.detail}
             </p>
 
@@ -126,7 +126,7 @@ export function CommunityShowcase({ items }: { items: CommunityItem[] }) {
                 <span
                   key={item.name}
                   className={`h-0.5 flex-1 transition-colors duration-300 ${
-                    item.name === activeName ? "bg-accent" : "bg-zinc-200"
+                    item.name === activeName ? "bg-foreground" : "bg-border"
                   }`}
                 />
               ))}

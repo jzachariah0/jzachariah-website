@@ -59,7 +59,7 @@ export function ProjectShowcase({ projects }: { projects: Project[] }) {
           return (
             <div
               key={project.slug}
-              className="relative border-b border-zinc-200/90"
+              className="relative border-b border-border"
             >
               {on && (
                 <motion.span
@@ -74,11 +74,11 @@ export function ProjectShowcase({ projects }: { projects: Project[] }) {
                 role="tab"
                 aria-selected={on}
                 onClick={() => setActiveSlug(project.slug)}
-                className="flex w-full items-baseline gap-4 py-5 pl-4 text-left outline-none transition-colors focus-visible:bg-zinc-50"
+                className="flex w-full items-baseline gap-4 py-5 pl-4 text-left outline-none transition-colors focus-visible:bg-surface"
               >
                 <span
                   className={`shrink-0 font-mono text-[11px] tracking-wide tabular-nums ${
-                    on ? "text-accent" : "text-zinc-300"
+                    on ? "text-accent" : "text-muted/50"
                   }`}
                 >
                   {String(index + 1).padStart(2, "0")}
@@ -87,15 +87,15 @@ export function ProjectShowcase({ projects }: { projects: Project[] }) {
                   <span
                     className={`block text-[15px] tracking-tight transition-colors ${
                       on
-                        ? "font-semibold text-[#0A2540]"
-                        : "font-medium text-zinc-400 hover:text-zinc-600"
+                        ? "font-semibold text-foreground"
+                        : "font-medium text-muted hover:text-muted"
                     }`}
                   >
                     {project.name}
                   </span>
                   <span
                     className={`mt-0.5 block text-sm transition-colors ${
-                      on ? "text-[#425466]" : "text-zinc-400"
+                      on ? "text-muted" : "text-muted"
                     }`}
                   >
                     {project.role}
@@ -108,9 +108,9 @@ export function ProjectShowcase({ projects }: { projects: Project[] }) {
       </div>
 
       <div className="relative min-h-[220px] lg:pt-1">
-        <p className="font-mono text-[11px] tracking-wide text-zinc-400 tabular-nums">
+        <p className="font-mono text-[11px] tracking-wide text-muted tabular-nums">
           {String(activeIndex + 1).padStart(2, "0")}
-          <span className="mx-1.5 text-zinc-300">/</span>
+          <span className="mx-1.5 text-muted/50">/</span>
           {String(projects.length).padStart(2, "0")}
         </p>
 
@@ -125,15 +125,15 @@ export function ProjectShowcase({ projects }: { projects: Project[] }) {
             className="mt-5"
           >
             <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-              <h3 className="text-2xl font-semibold tracking-tight text-[#0A2540] sm:text-3xl">
+              <h3 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
                 {active.name}
               </h3>
               {active.period && (
-                <p className="shrink-0 text-sm text-zinc-400">{active.period}</p>
+                <p className="shrink-0 text-sm text-muted">{active.period}</p>
               )}
             </div>
-            <p className="mt-2 text-sm text-[#425466]">{active.role}</p>
-            <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-[#425466] sm:text-base">
+            <p className="mt-2 text-sm text-muted">{active.role}</p>
+            <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-muted sm:text-base">
               {active.description}
             </p>
             <ProjectLinks project={active} />

@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 
 /**
- * About atmosphere: fine horizon + a single stroked accent path.
+ * About atmosphere: fine horizon + stroked accent paths with quiet depth.
  * Deliberately not the filled ContactWave.
  */
 export function AboutHorizon() {
@@ -13,8 +13,11 @@ export function AboutHorizon() {
     <div
       className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-[42%] min-h-[140px] overflow-hidden"
       aria-hidden
+      style={{
+        perspective: "1200px",
+        perspectiveOrigin: "50% 100%",
+      }}
     >
-      {/* Quiet horizontal rules */}
       <div
         className="absolute inset-0 opacity-[0.45]"
         style={{
@@ -31,6 +34,11 @@ export function AboutHorizon() {
         viewBox="0 0 1440 200"
         preserveAspectRatio="none"
         className="absolute inset-x-0 bottom-0 h-full w-full"
+        style={{
+          transformStyle: "preserve-3d",
+          transformOrigin: "50% 100%",
+          transform: reduceMotion ? undefined : "rotateX(14deg)",
+        }}
       >
         <motion.path
           d="M-40,120 C200,40 420,180 720,100 C1020,20 1240,150 1480,90"
@@ -52,7 +60,10 @@ export function AboutHorizon() {
               ? { duration: 0 }
               : { duration: 8, ease: "easeInOut", repeat: Infinity }
           }
-          style={{ pathLength: 1 }}
+          style={{
+            pathLength: 1,
+            transform: reduceMotion ? undefined : "translateZ(22px)",
+          }}
         />
         <motion.path
           d="M-40,150 C260,90 480,170 760,130 C1040,90 1280,160 1480,120"
@@ -62,15 +73,16 @@ export function AboutHorizon() {
           strokeOpacity="0.18"
           initial={false}
           animate={
-            reduceMotion
-              ? { x: 0 }
-              : { x: [0, -24, 0] }
+            reduceMotion ? { x: 0 } : { x: [0, -24, 0] }
           }
           transition={
             reduceMotion
               ? { duration: 0 }
               : { duration: 14, ease: "easeInOut", repeat: Infinity }
           }
+          style={{
+            transform: reduceMotion ? undefined : "translateZ(8px)",
+          }}
         />
       </svg>
     </div>

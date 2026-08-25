@@ -23,14 +23,14 @@ export function StoryChapters() {
   if (!active) return null;
 
   return (
-    <div className="grid gap-10 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] lg:gap-16">
+    <div className="grid gap-10 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] lg:gap-x-16 lg:gap-y-0">
       <div role="tablist" aria-label="Story chapters" aria-orientation="vertical">
         {story.sections.map((section, index) => {
           const on = section.id === activeId;
           return (
             <div
               key={section.id}
-              className="relative border-b border-zinc-200/90"
+              className="relative border-b border-border"
             >
               {on && (
                 <motion.span
@@ -45,11 +45,11 @@ export function StoryChapters() {
                 role="tab"
                 aria-selected={on}
                 onClick={() => setActiveId(section.id)}
-                className="flex w-full items-baseline gap-4 py-4 pl-4 text-left outline-none transition-colors focus-visible:bg-zinc-50"
+                className="flex w-full items-baseline gap-4 py-4 pl-4 text-left outline-none transition-colors focus-visible:bg-surface"
               >
                 <span
                   className={`shrink-0 font-mono text-[11px] tracking-wide tabular-nums ${
-                    on ? "text-accent" : "text-zinc-300"
+                    on ? "text-accent" : "text-muted/50"
                   }`}
                 >
                   {String(index + 1).padStart(2, "0")}
@@ -57,8 +57,8 @@ export function StoryChapters() {
                 <span
                   className={`text-[15px] tracking-tight transition-colors ${
                     on
-                      ? "font-semibold text-[#0A2540]"
-                      : "font-medium text-zinc-400 hover:text-zinc-600"
+                      ? "font-semibold text-foreground"
+                      : "font-medium text-muted hover:text-muted"
                   }`}
                 >
                   {section.title}
@@ -70,9 +70,9 @@ export function StoryChapters() {
       </div>
 
       <div className="min-h-[240px]">
-        <p className="font-mono text-[11px] tracking-wide text-zinc-400 tabular-nums">
+        <p className="font-mono text-[11px] tracking-wide text-muted tabular-nums">
           {String(activeIndex + 1).padStart(2, "0")}
-          <span className="mx-1.5 text-zinc-300">/</span>
+          <span className="mx-1.5 text-muted/50">/</span>
           {String(story.sections.length).padStart(2, "0")}
         </p>
 
@@ -86,23 +86,43 @@ export function StoryChapters() {
             transition={{ duration: 0.35, ease: EASE }}
             className="mt-5"
           >
-            <h3 className="text-2xl font-semibold tracking-tight text-[#0A2540] sm:text-3xl">
+            <h3 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
               {active.title}
             </h3>
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
-            {active.image && (
-              <div className="mt-6 overflow-hidden border border-zinc-200 bg-zinc-50">
-                <Image
-                  src={active.image}
-                  alt={active.imageAlt ?? ""}
-                  width={800}
-                  height={500}
-                  className="aspect-[16/10] h-auto w-full object-cover"
-                />
-              </div>
-            )}
+      {active.image && (
+        <div className="col-span-full mt-8 ml-[calc(50%-50vw)] w-screen overflow-hidden py-5 lg:mt-10">
+          <figure className="ml-auto w-[min(22rem,78vw)] origin-top-right translate-x-10 rotate-[1.6deg] sm:w-[24rem] sm:translate-x-12 lg:w-[28rem] lg:translate-x-[3.15rem]">
+            <div className="relative bg-white px-[0.65rem] pt-[0.65rem] pb-[3.4rem] shadow-[0_1px_1px_rgba(26,26,24,0.06),0_14px_36px_-10px_rgba(26,26,24,0.28)]">
+              <Image
+                src={active.image}
+                alt={active.imageAlt ?? ""}
+                width={720}
+                height={720}
+                className="aspect-square h-auto w-full object-cover object-[center_40%]"
+              />
+              <figcaption className="absolute inset-x-0 bottom-0 flex h-[3.4rem] flex-col items-center justify-center px-3 text-center font-hand text-[1.35rem] leading-none tracking-[-0.02em] text-[#1e4aa8] -rotate-[1.2deg]">
+                <span>where it started</span>
+                <span className="mt-1 text-[1.15rem]">06/28/2009, nj</span>
+              </figcaption>
+            </div>
+          </figure>
+        </div>
+      )}
 
-            <div className="mt-6 max-w-lg space-y-4 text-[15px] leading-relaxed text-[#425466] sm:text-base">
+      <div className="lg:col-start-2">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active.id}
+            initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -8 }}
+            transition={{ duration: 0.35, ease: EASE }}
+          >
+            <div className="mt-6 max-w-lg space-y-4 text-[15px] leading-relaxed text-muted sm:text-base">
               {active.paragraphs.map((p) => (
                 <p key={p.slice(0, 40)}>{p}</p>
               ))}
@@ -112,7 +132,7 @@ export function StoryChapters() {
                 <span
                   key={section.id}
                   className={`h-0.5 flex-1 transition-colors duration-300 ${
-                    section.id === activeId ? "bg-accent" : "bg-zinc-200"
+                    section.id === activeId ? "bg-foreground" : "bg-border"
                   }`}
                 />
               ))}
@@ -128,7 +148,7 @@ export function WritingMedia() {
   const { story } = profile;
 
   return (
-    <ul className="divide-y divide-zinc-200 border-t border-zinc-200">
+    <ul className="divide-y divide-border border-t border-border">
       {story.books.map((book) => (
         <li
           key={book.title}
@@ -140,23 +160,23 @@ export function WritingMedia() {
               alt=""
               width={64}
               height={96}
-              className="h-24 w-16 border border-zinc-200 object-cover"
+              className="h-24 w-16 border border-border object-cover"
             />
           ) : (
             <div
-              className="flex h-24 w-16 items-end border border-zinc-200 bg-zinc-50 p-1.5"
+              className="flex h-24 w-16 items-end border border-border bg-surface p-1.5"
               aria-hidden
             >
-              <span className="line-clamp-4 text-[9px] font-medium leading-tight text-zinc-400">
+              <span className="line-clamp-4 text-[9px] font-medium leading-tight text-muted">
                 {book.title}
               </span>
             </div>
           )}
           <div className="min-w-0">
-            <p className="font-medium tracking-tight text-[#0A2540]">
+            <p className="font-medium tracking-tight text-foreground">
               {book.title}
             </p>
-            <p className="mt-1 text-sm text-zinc-500">{book.note}</p>
+            <p className="mt-1 text-sm text-muted">{book.note}</p>
             <Link
               href={book.url}
               target="_blank"
@@ -174,13 +194,13 @@ export function WritingMedia() {
           alt=""
           width={64}
           height={64}
-          className="h-16 w-16 border border-zinc-200 object-cover"
+          className="h-16 w-16 border border-border object-cover"
         />
         <div className="min-w-0">
-          <p className="font-medium tracking-tight text-[#0A2540]">
+          <p className="font-medium tracking-tight text-foreground">
             {story.youtube.name}
           </p>
-          <p className="mt-1 text-sm text-zinc-500">
+          <p className="mt-1 text-sm text-muted">
             {story.youtube.subscribers} subscribers · {story.youtube.views} views
           </p>
           <Link

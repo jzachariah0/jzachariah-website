@@ -47,7 +47,7 @@ export function ExperienceExplorer({ items }: { items: Experience[] }) {
       <div
         role="tablist"
         aria-labelledby={labelId}
-        className="flex gap-3 overflow-x-auto border-b border-zinc-200 pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex gap-3 overflow-x-auto border-b border-border pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         <span id={labelId} className="sr-only">
           Experience
@@ -65,7 +65,7 @@ export function ExperienceExplorer({ items }: { items: Experience[] }) {
               aria-controls={`experience-panel-${job.id}`}
               id={`experience-tab-${job.id}`}
               onClick={() => setActiveId(job.id)}
-              className={`relative shrink-0 pb-3 transition-opacity ${
+              className={`group relative shrink-0 pb-3 transition-opacity ${
                 selected ? "opacity-100" : "opacity-35 hover:opacity-70"
               }`}
             >
@@ -95,19 +95,19 @@ export function ExperienceExplorer({ items }: { items: Experience[] }) {
           >
             <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between sm:gap-12">
               <div className="min-w-0 max-w-2xl">
-                <p className="text-2xl font-medium tracking-tight text-zinc-900">
+                <p className="text-2xl font-medium tracking-tight text-foreground">
                   {active.role}
                 </p>
-                <p className="mt-2 text-zinc-500">
+                <p className="mt-2 text-muted">
                   {active.company}
                   {active.location ? `, ${active.location}` : ""}
                 </p>
 
-                <ul className="mt-8 space-y-3 border-l border-zinc-200 pl-5">
+                <ul className="mt-8 space-y-3 border-l border-border pl-5">
                   {active.highlights.map((item) => (
                     <li
                       key={item.slice(0, 48)}
-                      className="text-sm leading-relaxed text-zinc-600 sm:text-[15px]"
+                      className="text-sm leading-relaxed text-muted sm:text-[15px]"
                     >
                       {item}
                     </li>
@@ -122,13 +122,13 @@ export function ExperienceExplorer({ items }: { items: Experience[] }) {
               </div>
 
               <div className="flex shrink-0 items-center gap-3 sm:flex-col sm:items-end sm:gap-4">
-                <p className="text-sm text-zinc-400">{active.period}</p>
+                <p className="text-sm text-muted">{active.period}</p>
                 <div className="flex gap-2">
                   <button
                     type="button"
                     onClick={() => selectByOffset(-1)}
                     aria-label="Previous"
-                    className="flex h-8 w-8 items-center justify-center border border-zinc-200 text-zinc-500 transition-colors hover:border-accent hover:text-accent"
+                    className="flex h-8 w-8 items-center justify-center border border-border text-muted transition-colors hover:border-accent hover:text-accent"
                   >
                     ←
                   </button>
@@ -136,7 +136,7 @@ export function ExperienceExplorer({ items }: { items: Experience[] }) {
                     type="button"
                     onClick={() => selectByOffset(1)}
                     aria-label="Next"
-                    className="flex h-8 w-8 items-center justify-center border border-zinc-200 text-zinc-500 transition-colors hover:border-accent hover:text-accent"
+                    className="flex h-8 w-8 items-center justify-center border border-border text-muted transition-colors hover:border-accent hover:text-accent"
                   >
                     →
                   </button>

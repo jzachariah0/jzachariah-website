@@ -1,53 +1,96 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { linkClass } from "@/components/ui";
 import { navLinks, profile } from "@/data/profile";
 
-export function Navigation() {
-  const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
+export function Navigation({ overlay = false }: { overlay?: boolean }) {
+  const [onHero, setOnHero] = useState(true);
+  const [hash, setHash] = useState("#top");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => setOnHero(window.scrollY < window.innerHeight * 0.55);
     window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const ids = navLinks.map((link) => link.href.slice(1));
+
+    const syncFromScroll = () => {
+      if (window.scrollY < window.innerHeight * 0.4) {
+        setHash("#top");
+        return;
+      }
+
+      let current = "#top";
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        if (el.getBoundingClientRect().top <= window.innerHeight * 0.32) {
+          current = `#${id}`;
+        }
+      }
+      setHash(current);
+    };
+
+    const onHashChange = () => {
+      setHash(window.location.hash || "#top");
+    };
+
+    syncFromScroll();
+    window.addEventListener("scroll", syncFromScroll, { passive: true });
+    window.addEventListener("hashchange", onHashChange);
+    return () => {
+      window.removeEventListener("scroll", syncFromScroll);
+      window.removeEventListener("hashchange", onHashChange);
+    };
+  }, []);
+
+  const light = overlay && onHero;
+
   return (
     <header
-      className={`sticky top-0 z-50 border-b transition-[background-color,border-color] duration-300 ${
-        scrolled
-          ? "border-zinc-200 bg-white/90 backdrop-blur-md"
-          : "border-transparent bg-white"
+      className={`z-50 border-b transition-[background-color,border-color,color] duration-300 ${
+        overlay ? "fixed inset-x-0 top-0" : "sticky top-0"
+      } ${
+        light
+          ? "border-transparent bg-transparent"
+          : overlay
+            ? "border-border bg-background/85 backdrop-blur-md"
+            : "border-transparent bg-background"
       }`}
     >
-      <nav className="mx-auto flex max-w-5xl items-baseline justify-between px-6 py-5">
-        <Link
-          href="/"
-          className="text-sm font-medium tracking-tight text-zinc-900 transition-colors hover:text-accent"
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+        <a
+          href="#top"
+          className={`text-[13px] font-medium tracking-[0.18em] uppercase transition-colors ${
+            light ? "text-[#f7f8f8]" : "text-foreground"
+          }`}
         >
           {profile.name}
-        </Link>
+        </a>
 
-        <ul className="flex items-center gap-6">
+        <ul className="flex items-center gap-7">
           {navLinks.map((link) => {
-            const active = pathname === link.href;
+            const active = hash === link.href;
             return (
               <li key={link.href}>
-                <Link
+                <a
                   href={link.href}
-                  className={`text-sm transition-colors ${
-                    active
-                      ? "font-medium text-accent"
-                      : linkClass
+                  className={`text-[13px] tracking-[0.02em] transition-colors ${
+                    light
+                      ? active
+                        ? "font-medium text-[#f7f8f8]"
+                        : "text-[#8a8f98] hover:text-[#f7f8f8]"
+                      : active
+                        ? "font-medium text-foreground"
+                        : "text-muted hover:text-foreground"
                   }`}
-                  aria-current={active ? "page" : undefined}
+                  aria-current={active ? "location" : undefined}
                 >
                   {link.label}
-                </Link>
+                </a>
               </li>
             );
           })}
