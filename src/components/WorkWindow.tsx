@@ -146,10 +146,10 @@ export function WorkWindow({
         >
           <div
             ref={windowRef}
-            className="relative overflow-hidden rounded-[12px] border border-black/10 bg-[#f8f7f2] shadow-[0_40px_80px_-24px_rgba(8,24,12,0.55),0_0_0_1px_rgba(255,255,255,0.35)]"
+            className="relative overflow-hidden rounded-[12px] border border-border/70 bg-background shadow-[0_40px_80px_-24px_rgba(8,24,12,0.55),0_0_0_1px_rgba(255,255,255,0.18)]"
           >
             <div
-            className="relative flex h-12 items-center border-b border-black/[0.06] bg-[#efede8] px-4"
+              className="relative flex h-12 items-center border-b border-border/70 bg-surface px-4"
               onPointerDown={onTitleDown}
             >
               <div className="flex gap-[7px]" aria-hidden>
@@ -203,7 +203,7 @@ export function WorkWindow({
             <div
               role="tablist"
               aria-label="Highlights"
-              className="flex gap-2.5 border-t border-black/[0.06] bg-[#efede8] px-5 py-3.5"
+              className="flex gap-2.5 border-t border-border/70 bg-surface px-5 py-3.5"
             >
               {items.map((item) => {
                 const on = item.label === active.label;

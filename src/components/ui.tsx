@@ -32,7 +32,7 @@ export const sceneSheetClass =
   "relative bg-background rounded-t-[2rem] shadow-[0_-32px_80px_-20px_rgba(8,9,10,0.55)] sm:rounded-t-[2.5rem]";
 
 export const secondaryButtonClass =
-  "inline-flex h-12 min-w-[10.5rem] items-center justify-center rounded-full bg-surface px-6 text-[15px] font-medium tracking-[-0.01em] text-foreground transition-colors duration-200 hover:bg-[#e5e4de]";
+  "inline-flex h-12 min-w-[10.5rem] items-center justify-center rounded-full bg-surface px-6 text-[15px] font-medium tracking-[-0.01em] text-foreground transition-colors duration-200 hover:bg-surface-hover";
 
 export const textButtonClass =
   "inline-flex items-center gap-1.5 text-sm font-medium text-muted transition-colors hover:text-foreground";

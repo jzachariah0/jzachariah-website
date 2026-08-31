@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Caveat } from "next/font/google";
+import { Caveat, Instrument_Serif } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -7,6 +7,13 @@ const caveat = Caveat({
   subsets: ["latin"],
   weight: ["500", "600"],
   variable: "--font-caveat",
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-instrument-serif",
   display: "swap",
 });
 
@@ -44,7 +51,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${satoshi.variable} ${caveat.variable}`}>
+    <html
+      lang="en"
+      className={`${satoshi.variable} ${instrumentSerif.variable} ${caveat.variable}`}
+    >
       <body className="min-h-screen bg-background font-sans text-foreground antialiased">
         {children}
       </body>

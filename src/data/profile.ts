@@ -150,49 +150,49 @@ export const profile = {
       id: "security",
       label: "Security",
       color: "#0A84FF",
-      summary: "Product security, IAM, and security engineering.",
+      summary: "Product security reviews, identity governance, and security engineering.",
       detail:
-        "PayPal Business Information Security Officer Group/Security Consulting internship. Enterprise IAM at Clyde Companies through JJZAC. SOC labs and MITRE-aligned detection work.",
+        "Built PayPal’s security engagement program in 12 weeks and deployed identity governance for 5,000+ users across 300+ applications.",
     },
     {
       id: "ai",
       label: "AI / ML",
       color: "#00C2A8",
-      summary: "AI products and machine learning systems.",
+      summary: "Secure AI products, authentication, rate limits, and cloud controls.",
       detail:
-        "Security engineering for Thevenin AI, an AI STEM Solver used internationally. Auth, rate-limiting, and cloud security around LLM endpoints.",
+        "Hardened LLM endpoints for Thevenin AI’s international users and shipped machine-learning proofs of concept at Insurity.",
     },
     {
       id: "research",
       label: "Research",
       color: "#7C5CFC",
-      summary: "Robotics, computer vision, and IoT.",
+      summary: "Humanoid robotics, computer vision, and real-time IoT systems.",
       detail:
-        "Research lead at the UT Dallas HBS Laboratory on humanoid robotics. IoT data pipelines in Rust at Rice University.",
+        "Lead an eight-person robotics team at UT Dallas and built distributed Rust sensor pipelines at Rice University.",
     },
     {
       id: "writing",
       label: "Writing",
       color: "#F5A623",
-      summary: "Books and technical communication.",
+      summary: "Books and clear communication about technology and healthcare.",
       detail:
-        "Author of The Digital Odyssey (#1 Amazon New Release). Co-author of Pumping Life: The Power of Your Heart.",
+        "Published a #1 Amazon New Release and co-authored Pumping Life: The Power of Your Heart.",
     },
     {
       id: "community",
       label: "Community",
       color: "#FF5A5F",
-      summary: "STEM access, healthcare access, teaching online, and regional tech infrastructure.",
+      summary: "Accessible STEM education, healthcare tools, and technical mentorship.",
       detail:
-        "Coding Central for free STEM education. Cardily healthcare access. Stanford Code in Place section leader. Itz Josh on YouTube.",
+        "Reached 5,000+ students through Coding Central, taught with Stanford Code in Place, and earned 100K+ educational video views.",
     },
     {
       id: "consulting",
       label: "Consulting",
       color: "#635BFF",
-      summary: "JJZAC LLC and client-facing technical work.",
+      summary: "IAM, cloud security, and enterprise technology advisory.",
       detail:
-        "Principal consultant since 2017 on IAM, cloud security, and enterprise IT. Top 0.01% at Best Buy advising clients on security and cloud adoption.",
+        "Principal of JJZAC since 2017 and ranked in the top 0.01% nationally at Best Buy for client technology consulting.",
     },
   ] satisfies FocusArea[],
   story: {

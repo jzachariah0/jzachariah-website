@@ -173,7 +173,7 @@ export function WritingMedia() {
             </div>
           )}
           <div className="min-w-0">
-            <p className="font-medium tracking-tight text-foreground">
+            <p className="font-display text-lg font-normal tracking-[-0.025em] text-foreground">
               {book.title}
             </p>
             <p className="mt-1 text-sm text-muted">{book.note}</p>
@@ -197,7 +197,7 @@ export function WritingMedia() {
           className="h-16 w-16 border border-border object-cover"
         />
         <div className="min-w-0">
-          <p className="font-medium tracking-tight text-foreground">
+          <p className="font-display text-lg font-normal tracking-[-0.025em] text-foreground">
             {story.youtube.name}
           </p>
           <p className="mt-1 text-sm text-muted">

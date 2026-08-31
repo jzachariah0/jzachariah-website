@@ -9,6 +9,15 @@ import {
 import { WritingMedia } from "@/components/MyStory";
 import { accentAt, profile } from "@/data/profile";
 
+const artworkPositions = [
+  "14% 50%",
+  "34% 50%",
+  "52% 50%",
+  "68% 50%",
+  "84% 50%",
+  "98% 50%",
+];
+
 export function AboutView() {
   const origin = profile.story.sections.find((section) => section.image);
   const totalCards = profile.story.sections.length + 2;
@@ -49,12 +58,15 @@ export function AboutView() {
             index={i}
             total={totalCards}
             color={accentAt(i)}
-            className="w-[min(84vw,30rem)]"
+            artwork
+            artworkPosition={artworkPositions[i % artworkPositions.length]}
+            showIndex={false}
+            className="w-[min(86vw,32rem)]"
           >
-            <h3 className="text-3xl font-semibold tracking-[-0.04em] text-foreground">
+            <h3 className="max-w-md font-display text-[3.25rem] leading-[0.88] font-normal tracking-[-0.045em] text-foreground sm:text-[3.75rem]">
               {section.title}
             </h3>
-            <div className="mt-6 max-w-md space-y-4 text-[15px] leading-7 text-muted">
+            <div className="mt-8 max-w-sm space-y-4 text-[14px] leading-6 text-muted">
               {section.paragraphs.map((p) => (
                 <p key={p.slice(0, 40)}>{p}</p>
               ))}
@@ -67,17 +79,26 @@ export function AboutView() {
           total={totalCards}
           color={accentAt(profile.story.sections.length)}
           eyebrow="Education"
+          artwork
+          artworkPosition={
+            artworkPositions[
+              profile.story.sections.length % artworkPositions.length
+            ]
+          }
+          showIndex={false}
           className="w-[min(84vw,32rem)]"
         >
-          <h3 className="text-2xl font-semibold tracking-tight text-foreground">
+          <h3 className="max-w-[25rem] font-display text-[2.5rem] leading-[0.9] font-normal tracking-[-0.035em] text-foreground sm:text-[2.75rem]">
             {profile.education.degree}
           </h3>
-          <p className="mt-2 text-sm text-muted">
+          <p className="mt-3 max-w-sm text-sm leading-6 text-muted">
             {profile.education.school} · {profile.education.graduation}
           </p>
-          <ul className="mt-6 space-y-2 text-[15px] leading-7 text-muted">
+          <ul className="mt-6 max-w-sm list-disc space-y-2 pl-4 text-[14px] leading-6 text-muted marker:text-foreground/30">
             {profile.education.details.map((item) => (
-              <li key={item}>{item}</li>
+              <li key={item} className="pl-1">
+                {item}
+              </li>
             ))}
           </ul>
           <p className="mt-8 text-[13px] font-medium tracking-[0.16em] text-muted uppercase">
@@ -93,6 +114,13 @@ export function AboutView() {
           total={totalCards}
           color={accentAt(profile.story.sections.length + 1)}
           eyebrow="Writing"
+          artwork
+          artworkPosition={
+            artworkPositions[
+              (profile.story.sections.length + 1) % artworkPositions.length
+            ]
+          }
+          showIndex={false}
           className="w-[min(86vw,34rem)] overflow-y-auto"
         >
           <WritingMedia />

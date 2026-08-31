@@ -8,6 +8,15 @@ interface FocusAreasProps {
   areas?: FocusArea[];
 }
 
+const artworkPositions = [
+  "16% 50%",
+  "36% 50%",
+  "54% 50%",
+  "72% 50%",
+  "88% 50%",
+  "100% 50%",
+];
+
 export function FocusAreas({ areas = profile.focusAreas }: FocusAreasProps) {
   return (
     <section id="focus" className="border-t border-border bg-background">
@@ -23,17 +32,32 @@ export function FocusAreas({ areas = profile.focusAreas }: FocusAreasProps) {
             index={i}
             total={areas.length}
             color={area.color}
-            className="w-[min(84vw,30rem)]"
+            artwork
+            artworkPosition={artworkPositions[i % artworkPositions.length]}
+            showIndex={false}
+            className="focus-card-readable w-[min(86vw,32rem)]"
           >
-            <h3 className="text-3xl font-semibold tracking-[-0.04em] text-foreground sm:text-4xl">
+            <h3 className="max-w-md font-display text-[3.25rem] leading-[0.88] font-normal tracking-[-0.045em] text-foreground sm:text-[3.75rem]">
               {area.label}
             </h3>
-            <p className="mt-6 max-w-md text-lg leading-8 text-muted">
-              {area.summary}
-            </p>
-            <p className="mt-4 max-w-md text-[15px] leading-7 text-muted">
-              {area.detail}
-            </p>
+            <dl className="mt-9 max-w-sm space-y-6">
+              <div>
+                <dt className="text-[11px] font-medium tracking-[0.16em] text-muted uppercase">
+                  Working on
+                </dt>
+                <dd className="mt-2 text-[16px] leading-6 text-foreground/85">
+                  {area.summary}
+                </dd>
+              </div>
+              <div className="border-t border-border/80 pt-5">
+                <dt className="text-[11px] font-medium tracking-[0.16em] text-muted uppercase">
+                  Impact
+                </dt>
+                <dd className="mt-2 text-[15px] leading-6 text-foreground/75">
+                  {area.detail}
+                </dd>
+              </div>
+            </dl>
           </SceneCard>
         ))}
       </HScrollTrack>

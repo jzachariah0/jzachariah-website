@@ -1,13 +1,35 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: light;
   --background: #f8f7f2;
   --foreground: #1a1a18;
   --muted: #6f6e69;
   --border: #e5e4de;
   --surface: #efede6;
+  --surface-hover: #e5e4de;
   --accent: #1a1a18;
   --accent-hover: #000000;
+  --focus-art-opacity: 0.2;
+  --focus-art-blend: multiply;
+  --focus-art-overlay: rgba(248, 247, 242, 0.78);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --background: #111210;
+    --foreground: #f3f2ec;
+    --muted: #aaa9a2;
+    --border: #2d2e2a;
+    --surface: #1a1b18;
+    --surface-hover: #252620;
+    --accent: #f3f2ec;
+    --accent-hover: #ffffff;
+    --focus-art-opacity: 0.3;
+    --focus-art-blend: screen;
+    --focus-art-overlay: rgba(17, 18, 16, 0.78);
+  }
 }
 
 @theme inline {
@@ -16,9 +38,11 @@
   --color-muted: var(--muted);
   --color-border: var(--border);
   --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --font-sans: var(--font-satoshi);
+  --font-display: var(--font-instrument-serif);
   --font-serif: var(--font-satoshi);
   --font-mono: var(--font-satoshi);
   --font-hand: var(--font-caveat);
@@ -45,4 +69,43 @@ a:focus-visible,
 button:focus-visible {
   outline: 2px solid var(--foreground);
   outline-offset: 2px;
+}
+
+.focus-card-art {
+  opacity: var(--focus-art-opacity);
+  mix-blend-mode: var(--focus-art-blend);
+}
+
+.focus-card-wash {
+  background:
+    linear-gradient(
+      105deg,
+      var(--surface) 0%,
+      var(--focus-art-overlay) 64%,
+      transparent 100%
+    ),
+    radial-gradient(
+      circle at 84% 12%,
+      color-mix(in srgb, var(--scene-color) 38%, transparent),
+      transparent 48%
+    );
+}
+
+.focus-card-readable .focus-card-art {
+  opacity: 0.14;
+}
+
+.focus-card-readable .focus-card-wash {
+  background:
+    linear-gradient(
+      100deg,
+      var(--surface) 0%,
+      var(--surface) 68%,
+      var(--focus-art-overlay) 100%
+    ),
+    radial-gradient(
+      circle at 88% 10%,
+      color-mix(in srgb, var(--scene-color) 30%, transparent),
+      transparent 44%
+    );
 }

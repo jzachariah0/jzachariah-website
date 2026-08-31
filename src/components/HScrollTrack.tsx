@@ -7,7 +7,12 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import { useLayoutEffect, useRef, type ReactNode } from "react";
+import {
+  useLayoutEffect,
+  useRef,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 
 export function HScrollTrack({ children }: { children: ReactNode }) {
   const reduceMotion = useReducedMotion();
@@ -75,6 +80,9 @@ export function SceneCard({
   total,
   color,
   eyebrow,
+  artwork = false,
+  artworkPosition = "center",
+  showIndex = true,
   className = "",
   children,
 }: {
@@ -82,42 +90,78 @@ export function SceneCard({
   total: number;
   color: string;
   eyebrow?: string;
+  artwork?: boolean;
+  artworkPosition?: string;
+  showIndex?: boolean;
   className?: string;
   children: ReactNode;
 }) {
   const num = String(index + 1).padStart(2, "0");
   return (
     <article
-      className={`relative flex h-auto min-h-[26rem] shrink-0 flex-col gap-6 border-l border-border/80 pl-8 sm:pl-10 ${className}`}
+      className={`relative flex h-auto min-h-[26rem] shrink-0 flex-col gap-6 ${
+        artwork
+          ? "overflow-hidden rounded-[1.75rem] border border-border/70 bg-surface px-8 py-9 shadow-[0_24px_70px_-40px_rgba(0,0,0,0.5)] sm:px-10 sm:py-10"
+          : "border-l border-border/80 pl-8 sm:pl-10"
+      } ${className}`}
+      style={
+        artwork
+          ? ({ "--scene-color": color } as CSSProperties)
+          : undefined
+      }
     >
+      {artwork ? (
+        <>
+          <div
+            className="focus-card-art pointer-events-none absolute inset-0 bg-cover bg-no-repeat"
+            style={{
+              backgroundImage: "url(/highlights-abstract.jpg)",
+              backgroundPosition: artworkPosition,
+            }}
+            aria-hidden
+          />
+          <div
+            className="focus-card-wash pointer-events-none absolute inset-0"
+            aria-hidden
+          />
+        </>
+      ) : null}
       <div
         className="pointer-events-none absolute -top-10 -right-6 h-56 w-56 rounded-full opacity-[0.16] blur-3xl"
         style={{ backgroundColor: color }}
         aria-hidden
       />
-      <span
-        aria-hidden
-        className="pointer-events-none absolute top-0 right-0 select-none text-[6.5rem] leading-none font-semibold tracking-[-0.06em] text-foreground/[0.06] sm:text-[8rem]"
-      >
-        {num}
-      </span>
-      <div className="relative flex items-center gap-3">
+      {showIndex ? (
         <span
-          className="h-2 w-2 shrink-0 rounded-full"
-          style={{ backgroundColor: color }}
           aria-hidden
-        />
-        <p className="font-mono text-[11px] tracking-[0.14em] text-muted tabular-nums">
+          className="pointer-events-none absolute top-0 right-0 select-none text-[6.5rem] leading-none font-semibold tracking-[-0.06em] text-foreground/[0.06] sm:text-[8rem]"
+        >
           {num}
-          <span className="mx-1.5 text-muted/40">/</span>
-          {String(total).padStart(2, "0")}
-        </p>
+        </span>
+      ) : null}
+      {showIndex || eyebrow ? (
+        <div className="relative flex items-center gap-3">
+          {showIndex ? (
+            <>
+              <span
+                className="h-2 w-2 shrink-0 rounded-full"
+                style={{ backgroundColor: color }}
+                aria-hidden
+              />
+              <p className="font-mono text-[11px] tracking-[0.14em] text-muted tabular-nums">
+                {num}
+                <span className="mx-1.5 text-muted/40">/</span>
+                {String(total).padStart(2, "0")}
+              </p>
+            </>
+          ) : null}
         {eyebrow ? (
           <p className="text-[11px] font-medium tracking-[0.16em] text-muted uppercase">
             {eyebrow}
           </p>
         ) : null}
-      </div>
+        </div>
+      ) : null}
       <div className="relative">{children}</div>
     </article>
   );
@@ -137,7 +181,7 @@ export function SceneIntro({
       <p className="text-[13px] font-medium tracking-[0.16em] text-muted uppercase">
         {label}
       </p>
-      <h2 className="mt-4 text-4xl font-semibold tracking-[-0.05em] text-foreground sm:text-5xl lg:text-6xl">
+      <h2 className="mt-4 font-display text-5xl leading-[0.88] font-normal tracking-[-0.04em] text-foreground sm:text-6xl lg:text-7xl">
         {title}
       </h2>
       {kicker ? (
