@@ -70,7 +70,7 @@ export const profile = {
     resume: "/resume",
   },
   about: [
-    "Cybersecurity-focused Computer Engineering Honors student at UT Dallas (Collegium V, Academic Excellence Scholarship), graduating May 2027.",
+    "Cybersecurity-focused Computer Engineering student at UT Dallas (Collegium V, Academic Excellence Scholarship), graduating May 2027.",
     "National Cyber Scholar (2024) and ISC² CC. Experience across product security, IAM, and security engineering, with additional work in research and community education.",
   ],
   proofStats: [
@@ -221,7 +221,7 @@ export const profile = {
         id: "today",
         title: "Now",
         paragraphs: [
-          "I am a Computer Engineering Honors student at UT Dallas (Collegium V), National Cyber Scholar, and ISC² CC certified, graduating May 2027.",
+          "I am a Computer Engineering student at UT Dallas (Collegium V), National Cyber Scholar, and ISC² CC certified, graduating May 2027.",
           "Outside class I keep building: research on campus, products and non-profit work, and consulting through JJZAC.",
         ],
       },
@@ -258,14 +258,14 @@ export const profile = {
   },
   education: {
     school: "The University of Texas at Dallas",
-    degree: "B.S. Computer Engineering (Honors)",
+    degree: "B.S. Computer Engineering",
     graduation: "May 2027",
     logo: "/logos/utd-logo.jpg",
     details: [
-      "Collegium V Honors Program",
+      "Collegium V",
       "Academic Excellence Scholarship",
       "Concentration: Information Security & AI",
-      "CodePath Cybersecurity with Honors",
+      "CodePath Cybersecurity",
     ],
   },
   experience: [

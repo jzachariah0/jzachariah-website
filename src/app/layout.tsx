@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     template: "%s | Joshua Zachariah",
   },
   description:
-    "Cybersecurity new grad (May 2027). Product security, IAM, and security engineering. UT Dallas Honors. ISC² CC. National Cyber Scholar.",
+    "Cybersecurity new grad (May 2027). Product security, IAM, and security engineering. UT Dallas. ISC² CC. National Cyber Scholar.",
   metadataBase: new URL("https://joshuazachariah.com"),
 };
 
