@@ -145,6 +145,17 @@ export const profile = {
       logo: "/logos/isc2-logo.jpg",
     },
   ],
+  featured: {
+    source: "PayPal",
+    heading: "Featured on PayPal’s LinkedIn.",
+    body: "PayPal posted their intern wrap-up to the company page. I was one of the two people in the coffee chat.",
+    credit: "Official company post",
+    logo: "/logos/paypal.svg",
+    poster: "/paypal-intern-feature.jpg",
+    embedSrc:
+      "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7510397092608069632?compact=1",
+    url: "https://www.linkedin.com/feed/update/urn:li:ugcPost:7510397092608069632",
+  },
   focusAreas: [
     {
       id: "security",

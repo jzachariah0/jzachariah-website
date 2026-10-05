@@ -1,6 +1,7 @@
 import { AboutView } from "@/components/AboutView";
 import { ContactView } from "@/components/ContactView";
 import { ExperienceView } from "@/components/ExperienceView";
+import { FeaturedIn } from "@/components/FeaturedIn";
 import { FocusAreas } from "@/components/FocusAreas";
 import { Footer } from "@/components/Footer";
 import { HighlightStage } from "@/components/HighlightScreen";
@@ -13,6 +14,7 @@ export default function HomePage() {
     <HomeChrome>
       <main className={`z-10 ${sceneSheetClass}`}>
         <HighlightStage />
+        <FeaturedIn />
         <Proof />
         <FocusAreas />
         <ExperienceView />
